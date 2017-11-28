@@ -7,6 +7,7 @@ void display(node *head);
 node* beginningInsertion(node *head);
 node* nthPositionInsertion(node *head);
 node* lastPositionInsertion(node *head);
+node* nthPositionDelete(node *head);
 
 int main(int argc, char **argv)
 {
@@ -21,7 +22,8 @@ int main(int argc, char **argv)
 		printf("2: Begining Insertion in a Link List.\n");
 		printf("3: nth Position Insertion in a Link List.\n");
 		printf("4: Last Insertion in a Link List.\n");
-		printf("5: Display.\n");
+		printf("5: nth position Delete in a Link List. \n");
+		printf("6: Display.\n");
 	
 		scanf("%d",&choose);
 		if(choose==1)
@@ -42,6 +44,10 @@ int main(int argc, char **argv)
 		head=lastPositionInsertion(head);
 	}
 	else if(choose==5)
+	{
+		head=nthPositionDelete(head);
+	}
+	else if(choose==6)
 	{
 		display(head);
 	}
@@ -173,5 +179,41 @@ node* lastPositionInsertion(node *head)
 		temp1=temp1->next;
 	}
 	temp1->next=temp;
+	return head;
+}
+
+node* nthPositionDelete(node *head)
+{
+	int position,count=0;
+	printf("Enter the Position: ");
+	scanf("%d",&position);
+	printf("");
+	node *temp=(node*)malloc(sizeof(node));
+	temp=head;
+	if(position == 1)
+	{
+		head=temp->next;
+		free(temp);		
+	}
+	else 
+	{
+		while(count<position-2)
+		{
+			temp=temp->next;
+		}
+		node *temp1=temp->next;
+		if(temp1->next!=NULL)
+		{
+			temp->next=temp1->next;
+			free(temp1);
+			head=temp;
+		}
+		else
+		{
+			temp->next=NULL;
+			free(temp1);
+			head=temp;
+		}
+	}
 	return head;
 }
