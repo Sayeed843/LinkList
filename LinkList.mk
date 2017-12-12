@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Silent
-Date                   :=28/11/17
+Date                   :=13/12/17
 CodeLitePath           :=/home/silent_soul/.codelite
 LinkerName             :=gcc
 SharedObjectLinkerName :=gcc -shared -fPIC
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/LinkList.c$(ObjectSuffix) 
 
 
 
@@ -91,13 +91,13 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/media/silent_soul/Programming/Code/Codelite/StructProgramming/LinkList/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.c$(DependSuffix): main.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
+$(IntermediateDirectory)/LinkList.c$(ObjectSuffix): LinkList.c $(IntermediateDirectory)/LinkList.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/media/silent_soul/Programming/Code/Codelite/StructProgramming/LinkList/LinkList.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LinkList.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/LinkList.c$(DependSuffix): LinkList.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LinkList.c$(ObjectSuffix) -MF$(IntermediateDirectory)/LinkList.c$(DependSuffix) -MM LinkList.c
 
-$(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
+$(IntermediateDirectory)/LinkList.c$(PreprocessSuffix): LinkList.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/LinkList.c$(PreprocessSuffix) LinkList.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
